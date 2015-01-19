@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <form action="http://localhost/test.php" method="post" id="register"></form>
+
+    <input type="text" name="user" value="" form="register" />
+    <input type="password" name="pwd" value="" form="register" />
+    <select name="year" form="register">
+        <option value="1970">1970</option>
+        <option value="1980">1980</option>
+        <option value="1990">1990</option>
+    </select>
+    <input type="submit" value="注册" form="register" />
+    <hr />
+    邮箱：<input type="email" name="youxiang" form="register" /><br />
+    网址：<input type="url" name="youxiang" form="register" /><br />
+    DATE：<input type="date" name="riqi" value="" form="register" /><br />
+    TIME：<input type="time" name="shijian" value="" form="register" /><br />
+    MONTH：<input type="month" name="yuefen" value="" form="register" /><br />
+    数字：<input type="number" name="shuzi" value="" form="register" /><br />
+    滑动条：<input type="range" name="huadong" value="" max="10" step="2" form="register" /><br />
+    颜色：<input type="color" name="yanse" value="" form="register" /><br />
+    <hr />
+    默认值：<input type="text" name="test" value="" placeholder="我是HTML5默认值" form="register" />
+    <hr />
+    自动填充表单<br />
+    <input type="text" name="auto" list="movie" value="" />
+    <datalist id="movie">
+        <option>人在囧途</option>
+        <option>车在囧途</option>
+        <option>泰囧</option>
+    </datalist>
+    <hr />
+    输出表单output<br />
+    <form action="" method="post" oninput="result.value=parseInt(no1.value)*parseInt(no2.value)">
+        <input type="number" name="no1" value="" />
+        <input type="number" name="no2" value="" />
+        <!--output就是保存Input里面的数字计算的临时结果-->
+        <output name="result"></output>
+    </form>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="canvas" width="1000" height="1000" style="background: grey">
+        您的浏览器不支持canvas元素
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        //设置绘图环境
+        var cxt = canvas.getContext('2d');
+
+        //声明一个时间参数(1:1day)
+        var time=0;
+        function draw() {
+            //清楚画布（清楚之前的内容，重新画）
+            cxt.clearRect(0,0,1000,1000);
+            //画轨道
+            //设置笔触
+            cxt.strokeStyle = "#FFF";
+            cxt.beginPath();
+            cxt.arc(500, 500, 100, 0, 360, false);
+            cxt.closePath();
+            cxt.stroke();
+
+            //画太阳
+            cxt.beginPath();
+            cxt.arc(500, 500, 20, 0, 360, false);
+            cxt.closePath();
+            //太阳需要设置填充颜色
+            //设置填充颜色（渐变色，球形使用径向渐变）
+            //使用HTML Dom方法，通过W3Cschool的教程中，浏览器教程可以查到
+            //createRadialGradient(圆心x，圆心y，半径，圆心x，圆心y，半径)
+            //使用两个圆主要是为了能够产生渐变环的效果
+            var sunColor = cxt.createRadialGradient(500, 500, 0, 500, 500, 20);
+            //为渐变设置颜色
+            sunColor.addColorStop(0, "#f00");
+            sunColor.addColorStop(1, "#f90");
+            cxt.fillStyle = sunColor;
+            cxt.fill();
+
+            //画地球，地球需要围绕太阳转，所以需要到异次元
+            cxt.save();
+            cxt.translate(500, 500);
+            //设置旋转角度
+            //cxt.rotate(90 * Math.PI / 190);
+            //地球公转一周需要365天，time=1天 转365/360度
+            cxt.rotate(time*365/360 * Math.PI / 190);
+            //画出地球
+            cxt.beginPath();
+            cxt.arc(0, -100, 10, 0, 360, false);
+            cxt.closePath();
+
+            //设置一下地球的颜色
+            var earchColor = cxt.createRadialGradient(0, -100, 0, 0, -100, 10);
+            //为渐变设置颜色
+            earchColor.addColorStop(0, "#050C12");
+            earchColor.addColorStop(1, "#78B1E8");
+            cxt.fillStyle = earchColor;
+            cxt.fill();
+            cxt.restore();
+            //每画一次图像，时间参数加1
+            time +=1;
+        }
+
+        //使地球动起来
+        setInterval(draw,10);
+
+    </script>
+</body>
+</html>

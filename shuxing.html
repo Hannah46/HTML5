@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p[id]{background: red}
+        p[id="green"]{background: green}
+        p[class~="yellow"]{background: yellow}
+        p[class|="A"]{background: blue}
+
+        a[href^="http"]{color: red;text-decoration: none}
+        a[href$="rar"]{color: pink;text-decoration: none}
+        a[href$="rar"]:after{content: url(images/rar.jpg)}
+
+        a[href*="o"]{background: green}
+    </style>
+</head>
+<body>
+    <p id="abc">小红</p>
+    <p id="green">小绿毛龟</p>
+    <p class="fl yellow">小黄</p>
+    <p class="yellow">也可以选中</p>
+    <p class="A-B">A-B小蓝</p>
+    <hr />
+    <!--E[attr^=""] 选中以指定值开头的属性的元素-->
+    <a href="http://www.baidu.com">百度</a>
+    <a href="index.php">返回首页</a><br />
+    <!--E[attr^=""] 选中以指定值开头的属性的元素-->
+    <a href="down.rar">点此下载</a>
+    <!--E[attr^=""] 选中以指定值开头的属性的元素-->
+</body>
+</html>

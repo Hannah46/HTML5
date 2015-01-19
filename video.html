@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <!--必须写controls属性，否则只有一个黑色的视频播放区域，没有开始的控制区域-->
+    <!--<video src="ch4/movie.webm" controls="controls">您的浏览器需要更新换代了，不支持视频啊！！</video>
+    <hr />
+    多资源的视频播放
+    <video controls="controls">-->
+        <!--type指定文件的MIME类型-->
+    <!--    <source src="ch4/movie.webm" type="video/webm" />
+        <source src="ch4/movie.ogg" type="video/ogg" />
+        您的浏览器不支持视频标签
+    </video>    -->
+    <hr />
+    使用以下VIDEO标签的API<br />
+    <video src="ch4/movie.webm" controls="controls" id="video">
+        您的浏览器太老拉！
+    </video>
+    <br />
+    <button onclick="bofang()">播放</button>
+    <button onclick="zanting()">暂停</button>
+    <button onclick="kuaijin()">快进10秒</button>
+    <button onclick="kuaitui()">快退10秒</button>
+    <button onclick="shutup(this)">静音</button>
+    <button onclick="fasten()">加速播放</button>
+    <button onclick="slowen()">减速播放</button>
+    <button onclick="upper()">提高音量</button>
+    <script type="text/javascript">
+        //获取对应的video标签
+        var video= document.getElementById('video');
+        //播放方法
+        function bofang() {
+            video.play();
+        }
+        //暂停方法
+        function zanting() {
+            video.pause();
+        }
+        //快进10秒
+        function kuaijin() {
+            video.currentTime += 10;
+        }
+        //快退10秒
+        function kuaitui() {
+            video.currentTime -=10;
+        }
+        //静音
+        function shutup(obj) {
+            if ( !video.muted ) {
+                video.muted= true;
+                obj.innerHTML = '开启声音';
+            }
+            else {
+                video.muted = false;
+                obj.innerHTML ='静音';
+            }
+        }
+        //加速播放(3倍速)
+        function fasten() {
+            video.playbackRate=3;
+        }
+        //慢速播放（3倍速）
+        function slowen() {
+            video.playbackRate=0.3;
+            //正常倍速指定playbackRate为1
+        }
+        //调高声音
+        function upper() {
+            //声音值的范围是0-1
+            video.volume +=0.1;
+        }
+    </script>
+    <hr />
+    音频标签的使用<br />
+    <audio src="ch4/我的好兄弟.mp3" controls="controls">
+        您的浏览器已经不行啦，赶紧换新的吧
+    </audio>
+</body>
+</html>

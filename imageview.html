@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;border: 0px;}
+        #all{position: relative;}
+        #bg{
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: #000;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0.7;
+        }
+        #pic{
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <img src="images/brother.png" onclick="show()" />
+        <div id="bg"></div>
+        <div id="pic">
+            <img src="images/under.jpg" onclick="hidd()" />
+        </div>
+    </div>
+    <script>
+        //点击背景显示对应弹出图片，实现灰色背景遮罩
+        function show(){
+            var bg = document.getElementById('bg');
+            var pic = document.getElementById('pic');
+            bg.style.display="block";
+            pic.style.display="block";
+        }
+
+        //隐藏出现的图片
+        function hidd(){
+            /*注意这里不要用hidden,浏览器会默认为属性，而不是这个方法*/
+            var bg = document.getElementById('bg');
+            var pic = document.getElementById('pic');
+            bg.style.display="none";
+            pic.style.display="none";
+        }
+    </script>
+</body>
+</html>

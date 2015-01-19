@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*
+        *{border: 1px solid red;height: 20px}
+        所有的HTML5标签本质是一个div标签，只不过有意义
+        */
+        /*页面头部 header*/
+        header{height: 150px;background: #ABCDEF}
+        nav{height: 30px;background: #ff9900;margin-top: 100px;}
+        nav ul li{width: 100px;height: 30px;float: left;line-height: 30px;} /*line-height居中显示*/
+        /*页面中间div*/
+        div{margin-top: 10px;height: 700px}
+        section{height: 700px;background: #ABCDEF;width: 70%;float: left;}
+        article{background: #ff9900;width: 500px; margin: 0 auto;text-align: center;}
+
+        aside{height: 700px;background: #ABCDEF;width: 28%;float: right;}
+        /*页面底部 footer*/
+        footer{height: 100px;background: #ABCDEF;margin-top: 10px;clear: both;}
+    </style>
+</head>
+<body>
+    <header>
+        <p>这是一个header标签部分</p>
+        <nav>
+            <!--nav是一个div，本身无效果，需要使用ul,li看出效果-->
+            <ul>
+                <!--li是块状元素，一个占一行，所以是竖着的，要用css定义float样式-->
+                <li>首页</li>
+                <li>企业</li>
+                <li>论坛</li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <!--页面主体区域-->
+        <section>
+            <p>这是一个section标签部分</p>
+            <article>
+                <!--尽量不要用header和footer，避免和页面中的混淆-->
+                <h2>春晓</h2>
+                <p>
+                    春眠不觉晓，<br />
+                    处处蚊子咬，<br />
+                </p>
+            </article>
+            <hr />            <!--figure标签的两种定义简称方式，figcaption以及dt&dd-->
+            <figure>
+                <figcaption>UFO</figcaption>
+                <p>不明飞行物 Unknown Flying Object</p>
+            </figure>
+            <figure>
+                <dt>DDS</dt>
+                <dd>大屌丝</dd>
+            </figure>
+            <hr/>
+            <!--dialog标签使用，可以认为dt用来提问，dd表示回答-->
+            <dialog>
+                <dt>我：老瞿你是猪吗？</dt>
+                <dd>老瞿：。。。（看着）</dd>
+                <dt>我：我觉得你就是猪啊~</dt>
+                <dd>老瞿：好吧，我就是猪。。。</dd>
+            </dialog>
+            <hr/>
+            <!--menu标签，大部分浏览器不支持，firefox可支持，
+            可以和li一起使用,但只是无需列表的样式，没有任何操作，
+            和menuitem一起使用时，才有点击事件-->
+            <menu>
+                <li>点击</li>
+                <li>右键单击</li>
+            </menu>
+            <hr />
+            <!--span是使用这个菜单的,也可以用div，避免跟外面的混乱-->
+            <span contextmenu="caidan">右键单击我试试</span>
+            <menu type="context" id="caidan">
+                <!--包含三个属性，label表示文本，Onclick是绑定的单击事件，icon是显示的小图标，此处使用百度的logo-->
+                <menuitem label="菜单一" onclick="alert('这是菜单一')" icon="http://www.baidu.com/img/bdlogo.png"></menuitem>
+            </menu>
+            <hr />
+            <!--当<low或者>high时，会呈现黄色，其他时候为绿色-->
+            <meter min="0" max="10" value="5" low="3" high="7"></meter>
+            <progress max="100" value="0" id="pro"></progress>
+            <!--使用js小脚本控制progress-->
+            <script>
+                var pro= document.getElementById('pro');
+                setInterval(function() {
+                    //每秒增加10%
+                    pro.value +=1;
+                },200);
+            </script>
+            <hr />
+            <!--details一般与dt&dd一起使用-->
+            <details>
+                <dt>这是一个问题？</dt>
+                <dd>to be or not to be</dd>
+            </details>
+            <hr />
+            <!--注释标签，比如给某个生僻字加注音,
+            一般的注释标签使用rt标签，但是这种不能被webkit内核的浏览器识别，比如firefox,chrome，
+            因此在注释外加个“（）”，但对于本身支持rt标签的浏览器（IE等），会在字的后面-->
+            <ruby>夼<rp>(</rp><rt>kuang</rt><rp>)</rp></ruby>
+            <ruby>夼（<rt>kuang</rt>）</ruby>
+            <hr />
+            <!--想要对某些字进行强调，html4有粗体<br>，着重<i>-->
+            老瞿<mark>最喜欢做的事情</mark>就是逛街。。。吃。。。逛街。。。吃。。。偶尔还会呜呜的哭，
+            所以总结下老瞿就是：逛吃逛吃逛吃。。。呜呜呜~~
+        </section>
+        <aside>
+            <p>这是一个aside标签部分</p>
+            <!--定义一组标题，一系列主题-->
+            <hgroup>
+                <!--建议不要使用h1和h2，h1一般一个网页只有一个，只用于标题或Logo
+                ，h2标签主体部分用过，所以用h3-->
+                <h3>女生宿舍为何频频被盗</h3>
+                <h3>200头母猪为何半夜惨死</h3>
+                <h3>是人性的扭曲？还是道德的沦丧？</h3>
+            </hgroup>
+        </aside>
+    </div>
+    <footer>
+        <p>这是一个footer标签部分</p>
+        <hr />
+        <small>联系我们</small>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #test tr:nth-child(odd){background: red}
+        #test tr:first-child{background: green}
+        /*这里不能写>，浏览器在解析时，tr不是子元素，而是子孙元素，
+            浏览器会在table 和tr之间加一个tbody标签
+            需要注意：要先设定奇数行颜色，再设定第一行颜色
+            */
+    </style>
+</head>
+<body>
+    <table width="500" border="1" id="test">
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+    </table>
+</body>
+</html>

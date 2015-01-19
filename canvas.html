@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas width="500" height="800" style="background: yellow" id="canvas">
+        您的浏览器版本太老啦，该更新了
+    </canvas>
+    <script>
+        //获取画布DOM
+        //alert得到的结果是[object HTMLCanvasElement]
+        var canvas=document.getElementById('canvas');
+        //设置绘图环境,目前还不支持3d，还不能使用html5
+        //alert得到的结果是[object CanvasRenderingContext2D]
+        var cxt = canvas.getContext('2d');
+        //画一条线段
+            cxt.beginPath();
+            //可以通过属性设定线段的样式，比如笔触宽度和颜色属性
+            cxt.lineWidth=10;
+            cxt.strokeStyle="#00ff00"; //可以写css中所有的颜色设定方式
+            //设定笔触位置，只是把笔放到了(20,20)的位置
+            cxt.moveTo(20,20);
+            //这是给另一个指令，要画到(100,20)的位置，但是实际没有画
+            cxt.lineTo(100,20);
+            //真正画线
+            cxt.stroke();
+            //封闭路径
+            cxt.closePath();
+
+        //画一个圆形（用路径函数）
+            cxt.beginPath();
+            cxt.lineWidth=2;
+            //前两个属性是圆心位置，第三个是半径，
+            //第四、五个表示是圆的多少部分，最后一个表示是顺时针还是逆时针
+            cxt.arc(100,200,50,0,360,false);
+            cxt.stroke();
+            cxt.closePath();
+
+        //画一个实心圆形
+            cxt.beginPath();
+            //改变圆的颜色，设置填充的颜色
+            cxt.fillStyle="red";
+            cxt.arc(100,100,50,0,360,false);
+            cxt.fill();
+            //给圆加上边框，直接画一个空心圆就可以了
+            cxt.stroke();
+            cxt.closePath();
+
+        //画一个矩形
+            //常用方法
+//            cxt.beginPath();
+//            cxt.rect(300,20,100,100);
+//            cxt.stroke();
+//            cxt.closePath();
+//            //其他方法，建议使用此方式，免去开启关闭
+//            cxt.strokeRect(300,150,100,100);
+//            //画实心矩形
+//            cxt.beginPath();
+//            cxt.rect(300,270,100,100);
+//            cxt.fill();
+//            cxt.closePath();
+//            //其他方法,建议使用此方式，免去开启关闭
+//            cxt.fillRect(300,390,100,100);
+
+        //写一段文字
+//        //设置文字
+//        cxt.font="40px 黑体"; //css font属性，必须有顺序限制
+//        cxt.fillText("老瞿是头猪",20,300);   //实心字
+//        //将笔触设置为1px
+//        cxt.lineWidth=1;
+//        cxt.strokeText("老瞿是头猪",20,350); //空心字
+
+        //把一幅图片画到画图中
+        var img = new Image();
+        img.src ="canvas/laoqu.jpg";
+        //第四、五个属性是图像的大小，可以通过设置这两个进行图片缩放
+        cxt.drawImage(img,20,400,248,169);
+
+        //画一个三角形
+        cxt.beginPath();
+        cxt.moveTo(300,250);
+        cxt.lineTo(400,370);
+        cxt.lineTo(200,370);
+        //要先封闭路径再进行画线
+        cxt.closePath();
+        cxt.stroke();
+        //画实心三角形
+        cxt.fill();
+
+        //旋转图片
+        //设置旋转环境，设置旋转的空间
+        cxt.save();
+            //在旋转空间重置(0,0)的位置
+            cxt.translate(20,20);
+            //图片或形状旋转操作；
+            //设置旋转角度 参数是弧度 弧度=角度*Math.PI/180
+            //是以canvas标签的顶点（0，0）作为原点旋转
+            cxt.rotate(-20*Math.PI/180);
+            //旋转一个线段
+            cxt.beginPath();
+            cxt.moveTo(0,0);
+            cxt.lineTo(20,100);
+            cxt.stroke();
+            cxt.closePath();
+        //旋转后的元素放回原画布
+        cxt.restore();
+        //过程不可以颠倒，先设置（0，0），再旋转角度再画线段
+
+        //旋转老瞿
+        cxt.save();
+        cxt.translate(20,400);
+        cxt.rotate(10*Math.PI/180);
+        var img = new Image();
+        img.src ="canvas/laoqu.jpg";
+        //第四、五个属性是图像的大小，可以通过设置这两个进行图片缩放
+        //要注意画图位置要设置为（0，0）
+        cxt.drawImage(img,0,0,248,169);
+        cxt.restore();
+
+    </script>
+</body>
+</html>

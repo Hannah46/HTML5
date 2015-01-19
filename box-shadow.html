@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{  margin: 100px;
+            width: 200px;
+            height: 100px;
+            background: #cccccc;
+            }
+
+        #box{
+            /*左上阴影*/
+            -webkit-box-shadow: -5px -5px; /*实验性质的浏览器写法*/
+            box-shadow: -5px -5px;/*W3C标准的*/
+        }
+
+        #soft{
+            box-shadow: 10px 10px 10px;
+        }
+
+        #color{
+            box-shadow: 10px 10px 10px #ABCDEF;
+        }
+
+        .rainbow{
+            box-shadow:
+                /*第4个属性表示阴影向外部延伸的长度*/
+                0px 0px 10px 10px red, /*红色阴影*/
+                0px 0px 10px 20px orange, /*橙色阴影*/
+                0px 0px 10px 30px yellow, /*黄色阴影*/
+                0px 0px 10px 40px green, /*绿色阴影*/
+                0px 0px 10px 50px cyan, /*青色阴影*/
+                0px 0px 10px 60px blue, /*蓝色阴影*/
+                0px 0px 10px 70px purple; /*紫色阴影*/
+        }
+
+        /*按钮按下之前，凸起*/
+        .button,#button2{
+            box-shadow: 5px 5px ;
+            font-size: 40px;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        /*按钮按下之后，凹下去*/
+        .button_inset{
+            box-shadow: 5px 5px inset;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <div id="soft">柔和阴影</div>
+    <div id="color">彩色阴影</div>
+    <div class="rainbow"></div>
+    <div class="button">未点击按钮的效果</div>
+    <div class="button_inset">按钮按下之后的效果</div>
+    <div id="button2">瞿多多</div>
+    <script>
+        var button=document.getElementById('button2');
+        //注册事件（按下鼠标事件）
+        button.onmousedown=function(){
+            this.style.boxShadow='5px 5px inset';
+            this.style.lineHeight='90px';
+        }
+        //松开鼠标事件
+        button.onmouseup= function () {
+            this.style.boxShadow='5px 5px';
+            this.style.lineHeight='100px';
+        }
+        //鼠标移出事件
+        button.onmouseout= function () {
+            this.style.boxShadow='5px 5px';
+            this.style.lineHeight='100px';
+        }
+    </script>
+</body>
+</html>

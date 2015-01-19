@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <canvas id="demo" width="500" height="500" style="border: 1px solid #000"></canvas>
+    <script>
+        var canvas = document.getElementById('demo');
+        var cxt = canvas.getContext('2d');
+
+//        画图的步骤
+//        开始绘图路径 cxt.beginPath();
+//        设置绘图的开始点 cxt.moveTo();——鼠标按下的时候
+//        绘制不同的点 cxt.lineTo();
+//        绘制不同的点 cxt.lineTo();
+//        绘制不同的点 cxt.lineTo();——鼠标移动的时候
+//        结束绘图路径 cxt.closePath();
+//        用画笔画出路径 cxt.stroke();——鼠标移动的时候
+//        结束绘图的时候 ——鼠标抬起+鼠标移出
+
+        var flag =0; //设置标识位，判断是否按下
+        //鼠标按下的时候——设置开始点
+        canvas.onmousedown=function(evt) {
+            //这个开始点是相对于画布的（0，0）点而言的位置
+                //获取到鼠标相对于屏幕之间的距离
+                //整合鼠标事件（针对火狐和IE，IE是windows.event事件）
+                evt = window.event || evt;
+                //alert(evt.pageX+'--'+evt.pageY);
+                //获取当前对象（标签）相对于页面顶端的距离
+                //alert(this.offsetLeft+'--'+this.offsetTop);
+            //鼠标相对于canvas(0,0)点
+            var startX=evt.pageX- this.offsetLeft;
+            var startY=evt.pageY- this.offsetTop;
+            cxt.beginPath();
+            cxt.moveTo(startX,startY);
+            flag =1; //标记鼠标按下
+        }
+
+        //鼠标移动的时候——不停绘图（获取鼠标位置）
+        canvas.onmousemove=function(evt){
+            evt = window.event || evt;
+            var endX=evt.pageX- this.offsetLeft;
+            var endY=evt.pageY- this.offsetTop;
+            //判断鼠标是否按下
+            if (flag) {
+                //移动的时候设置路径，并且画出来
+                cxt.lineTo(endX,endY);
+                cxt.stroke();;
+            }
+        }
+
+        //鼠标抬起的时候结束绘图
+        canvas.onmouseup=function(){
+            flag =0;
+        }
+
+        //鼠标移出canvas的时候取消画图操作
+        canvas.onmouseout=function(){
+            flag=0; //标记鼠标抬起了
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>HTML5在线画板</title>
+    <link type="text/css" rel="stylesheet" href="css/canvas.css">
+</head>
+
+<body>
+    <header id="top">HTML5在线画板</header>
+
+    <section id="content">
+        <!--工具区域-->
+        <ul id="tools">
+            <li>
+                <h3>图像</h3>
+                <hr />
+                <ul id="image">
+                    <li id="saveimg"><button onclick="saveimge()">保存图片</button></li>
+                    <li id="clearimg"><button onclick="clearimg()">清空画板</button></li>
+                </ul>
+            </li>
+            <li>
+                <h3>工具</h3>
+                <hr />
+                <ul id="means">
+                    <!--每个按钮有不同的功能，所以设置的onclick是不一样的-->
+                    <li id="means_brush" onclick="drawBrush(0)"><img src="images/Brush.png" /></li>
+                    <li id="means_eraser" onclick="drawEraser(1)"><img src="images/Eraser.png" /></li>
+                    <li id="means_paint" onclick="drawPaint(2)"><img src="images/Paint.png" /></li>
+                    <li id="means_straw" onclick="drawStraw(3)"><img src="images/Straw.png" /></li>
+                    <li id="means_text" onclick="drawText(4)"><img src="images/text.png" /></li>
+                    <li id="means_magnifier" onclick="drawMagnifier(5)"><img src="images/Magnifier.png" /></li>
+                </ul>
+            </li>
+            <li>
+                <h3>形状</h3>
+                <hr />
+                <ul id="shape">
+                    <li id="shape_line" onclick="drawLine(6)"><img src="images/line.png" /></li>
+                    <li id="shape_arc" onclick="drawArc(7)"><img src="images/arc.png" /></li>
+                    <li id="shape_rect" onclick="drawRect(8)"><img src="images/rect.png" /></li>
+                    <li id="shape_poly" onclick="drawPoly(9)"><img src="images/poly.png" /></li>
+                    <li id="shape_arcfill" onclick="drawArcfill(10)"><img src="images/arcfill.png" /></li>
+                    <li id="shape_rectfill" onclick="drawRectfill(11)"><img src="images/rectfill.png" /></li>
+                </ul>
+            </li>
+            <li>
+                <h3>线宽</h3>
+                <hr />
+                <ul id="size">
+                    <li id="size_1" onclick="setSize(0)"><img src="images/line1px.png" /></li>
+                    <li id="size_3" onclick="setSize(1)"><img src="images/line3px.png" /></li>
+                    <li id="size_5" onclick="setSize(2)"><img src="images/line5px.png" /></li>
+                    <li id="size_8" onclick="setSize(3)"><img src="images/line8px.png" /></li>
+                </ul>
+            </li>
+            <li>
+                <h3>颜色</h3>
+                <hr />
+                <ul id="color">
+                    <li id="red" onclick="setColor(this,0)"></li>
+                    <li id="green" onclick="setColor(this,1)"></li>
+                    <li id="blue" onclick="setColor(this,2)"></li>
+                    <li id="yellow" onclick="setColor(this,3)"></li>
+                    <li id="white" onclick="setColor(this,4)"></li>
+                    <li id="black" onclick="setColor(this,5)"></li>
+                    <li id="pink" onclick="setColor(this,6)"></li>
+                    <li id="purple" onclick="setColor(this,7)"></li>
+                    <li id="cyan" onclick="setColor(this,8)"></li>
+                    <li id="orange" onclick="setColor(this,9)"></li>
+                </ul>
+            </li>
+        </ul>
+        <!--绘图区域-->
+        <!--canvas的宽和高最好不再css中设置，可能出现错位的问题-->
+        <canvas width="880" height="450" id="canvas">
+
+        </canvas>
+        <!--在canvas标签之后连入js文件-->
+        <script src="js/canvas.js">
+
+        </script>
+    </section>
+
+    <footer id="bottom">
+        <small>版权声明</small>
+    </footer>
+</body>
+</html>

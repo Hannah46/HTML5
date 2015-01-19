@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #yuan{
+            width: 100px;
+            height: 50px;
+            border-top: 2px solid red;
+            border-right: 2px solid red;
+            border-bottom: 50px solid red;
+            border-left: 2px solid red;
+            border-radius: 100px;
+            position: relative;/*设置伪对象参照物，为relative或absolute*/
+
+        }
+
+        #yuan::after{
+            content: '';
+            width: 10px;
+            height: 10px;
+            border: 20px solid red;
+            position: absolute;
+            /*absolute一定要有参照物，如果没有就是屏幕左上角
+                绝对定位要设置top和left*/
+            left: 0px;
+            top: 25px;
+            border-radius: 50px;
+            background: white;
+        }
+
+        #yuan::before{
+            content: '';
+            width: 10px;
+            height: 10px;
+            border: 20px solid white;
+            position: absolute;
+            /*absolute一定要有参照物，如果没有就是屏幕左上角
+                绝对定位要设置top和left*/
+            right: 0px;
+            top: 25px;
+            border-radius: 50px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="yuan">
+    </div>
+</body>
+</html>

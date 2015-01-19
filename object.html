@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p::first-line{color: red}
+        p::first-letter{color: green;font-size: 20px}
+        /*before和after需要配合content使用，可以写字，也可以加图片*/
+        a::before{content:"我是前门" }
+        a::after{content: url(images/qvod.jpg)}
+
+        span::selection{background: yellow}
+    </style>
+</head>
+<body>
+    <p>
+        春晓-孟浩然<br />
+        春眠不觉晓，<br />
+        处处蚊子咬，<br />
+        打上敌敌畏，<br />
+        不知死多少。<br />
+    </p>
+    <hr />
+    <a href="aaa.mp3">点此下载</a>
+    <hr />
+    <span>听歌听的是腕</span>
+</body>
+</html>
